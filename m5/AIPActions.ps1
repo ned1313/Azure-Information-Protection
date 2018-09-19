@@ -17,5 +17,5 @@ Get-AadrmSuperUserGroup
 #Remove a super user
 Remove-AadrmSuperUser -EmailAddress "MaGarber@contoso-ned.xyz"
 
-#Add a super user
-Add-AadrmSuperUser -EmailAddress "JoMcGee@contoso-ned.xyz"
+#Set a super user group
+Set-AadrmSuperUserGroup -GroupEmailAddress "328d61fc7d@nedinthecloud.onmicrosoft.com"
