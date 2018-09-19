@@ -15,9 +15,9 @@ Remove-AadrmTemplate -TemplateId "template ID"
 
 #Create a new template
 $names = @{}
-$names[1033] = "Grey Jay - Confidential content"
+$names[1033] = "Grey Jay - Highly Confidential content"
 $descriptions = @{}
-$descriptions[1033] = "This content is confidential for people working in Grey Jay and should not be shared externally"
+$descriptions[1033] = "This content is highly confidential for people working in Grey Jay and should not be shared externally"
 $r1 = New-AadrmRightsDefinition -DomainName "contoso-ned.xyz" -Rights "VIEW","EXPORT"
 $r2 = New-AadrmRightsDefinition -EmailAddress "JoMcGee@contoso-ned.xyz" -Rights "OWNER"
 Add-AadrmTemplate -Names $names -Descriptions $Descriptions -LicenseValidityDuration 5 -RightsDefinitions $r1, $r2 -Status Published

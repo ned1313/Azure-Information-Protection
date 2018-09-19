@@ -14,6 +14,3 @@ Get-AadrmKeys
 $key = (Get-AadrmKeys) | Sort-Object CreationTime | Select-Object -First 1
 
 Set-AadrmKeyProperties -KeyIdentifier $key.KeyIdentifier.Guid -Active:$true
-
-
-
