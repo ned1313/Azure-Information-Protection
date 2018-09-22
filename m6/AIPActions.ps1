@@ -37,6 +37,8 @@ $results = Import-Csv -Header Timestamp,User, Action, Status, Info -Path $adminL
 $results | Where-Object{$_.Action -like "*superuser*"} | Format-Table
 
 #Get Document Tracking
+Get-AadrmDocumentTrackingFeature
+
 Get-AadrmDocumentLog -UserEmail "MaGarber@contoso-ned.xyz" -FromTime (get-date).AddDays(-10)
 Get-AadrmTrackingLog -UserEmail "MaGarber@contoso-ned.xyz"
 
