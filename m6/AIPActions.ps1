@@ -38,5 +38,5 @@ $results | Where-Object{$_.Action -like "*superuser*"} | Format-Table
 
 #Get Document Tracking
 Get-AadrmDocumentLog -UserEmail "MaGarber@contoso-ned.xyz" -FromTime (get-date).AddDays(-10)
-
+Get-AadrmTrackingLog -UserEmail "MaGarber@contoso-ned.xyz"
 
