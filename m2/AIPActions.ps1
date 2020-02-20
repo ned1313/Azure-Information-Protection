@@ -2,10 +2,10 @@
 $Cred = Get-Credential
 
 #Connect to the Azure AD RMS Service
-Connect-AadrmService -Credential $Cred
+Connect-AipService -Credential $Cred
 
 #Template Commands
-Get-Command -Module AADRM *Template*
+Get-Command -Module AIPService *Template*
 
 #Get All templates
 Get-AadrmTemplate

@@ -2,15 +2,15 @@
 $Cred = Get-Credential
 
 #Connect to the Azure AD RMS Service
-Connect-AadrmService -Credential $Cred
+Connect-AipService -Credential $Cred
 
 #Get the commands
-Get-Command "*aadrmkey*"
+Get-Command "*aipservicekey*"
 
-#Get the AADRM Keys
-Get-AadrmKeys
+#Get the AIP Service Keys
+Get-AipServiceKeys
 
 #Update the key to Microsoft managed
-$key = (Get-AadrmKeys) | Sort-Object CreationTime | Select-Object -First 1
+$key = (Get-AipServiceKeys) | Sort-Object CreationTime | Select-Object -First 1
 
-Set-AadrmKeyProperties -KeyIdentifier $key.KeyIdentifier.Guid -Active:$true
+Set-AipServiceKeyProperties -KeyIdentifier $key.KeyIdentifier.Guid -Active:$true
