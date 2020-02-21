@@ -2,20 +2,20 @@
 $Cred = Get-Credential
 
 #Connect to the Azure AD RMS Service
-Connect-AadrmService -Credential $Cred
+Connect-AipService -Credential $Cred
 
 #Get all super user commands
-Get-Command "*SuperUser*"
+Get-Command -Module AIPService "*SuperUser*"
 
 #Check the super user feature
-Get-AadrmSuperUserFeature
+Get-AipServiceSuperUserFeature
 
 #Get all super users
-Get-AadrmSuperUser
-Get-AadrmSuperUserGroup
+Get-AipServiceSuperUser
+Get-AipServiceSuperUserGroup
 
 #Remove a super user
-Remove-AadrmSuperUser -EmailAddress "MaGarber@contoso-ned.xyz"
+Remove-AipServiceSuperUser -EmailAddress "MaGarber@contoso-ned.xyz"
 
 #Set a super user group
-Set-AadrmSuperUserGroup -GroupEmailAddress "328d61fc7d@nedinthecloud.onmicrosoft.com"
+Set-AipServiceSuperUserGroup -GroupEmailAddress "328d61fc7d@nedinthecloud.onmicrosoft.com"

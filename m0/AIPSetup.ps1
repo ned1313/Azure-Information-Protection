@@ -14,11 +14,11 @@ Get-IRMConfiguration
 Set-IRMConfiguration -AzureRMSLicensingEnabled $true
 
 #Install the Azure AD RMS Module
-Find-Module AADRM
-Install-Module AADRM -Force
+Find-Module AIPService
+Install-Module AIPService -Force
 
 #Connect to the Azure AD RMS Service
-Connect-AadrmService -Credential $Cred
+Connect-AipService -Credential $Cred
 
 #Enable the super user feature
 Get-AadrmSuperUserFeature
@@ -28,35 +28,35 @@ Add-AadrmSuperUser -EmailAddress "MaGarber@contoso-ned.xyz"
 
 #Prepare Azure Key Vault
 #Install Azure PowerShell
-Find-Module AzureRM
-Install-Module AzureRM -Force
+Find-Module Az
+Install-Module Az -Force
 
 #Log into Azure and get subscription
-Add-AzureRMAccount
-Get-AzureRMSubscription
+Add-AzAccount
+Get-AzSubscription
 
 #Create a Resource Group
 $ResourceGroup = Read-Host -Prompt "Resource Group Name"
 $Location = Read-Host -Prompt "Location for Resource Group and Key Vault"
-New-AzureRmResourceGroup -Name $ResourceGroup -Location $Location
+New-AzResourceGroup -Name $ResourceGroup -Location $Location
 
 #Create a Key Vault
 $Vault = Read-Host -Prompt "Vault Name"
-New-AzureRmKeyVault -Name $Vault -ResourceGroupName $ResourceGroup -Location $Location -Sku Standard
+New-AzKeyVault -Name $Vault -ResourceGroupName $ResourceGroup -Location $Location -Sku Standard
 
 #Create a Key
-$key = Add-AzureKeyVaultKey -VaultName $Vault -Name "contoso-aip-key" -Destination Software -Size 2048
+$key = Add-AzKeyVaultKey -VaultName $Vault -Name "contoso-aip-key" -Destination Software -Size 2048
 
 #Configure Vault Access
-Set-AzureRmKeyVaultAccessPolicy -VaultName $vault -ResourceGroupName $ResourceGroup -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
+Set-AzKeyVaultAccessPolicy -VaultName $vault -ResourceGroupName $ResourceGroup -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
 
 #Configure BYOK
-Use-AadrmKeyVaultKey -KeyVaultKeyUrl $key.Id
+Use-AipServiceKeyVaultKey -KeyVaultKeyUrl $key.Id
 
-#Get the AADRM Keys
-Get-AadrmKeys
+#Get the AIP Service Keys
+Get-AipServiceKeys
 #Set the new key as active
-Set-AadrmKeyProperties -KeyIdentifier "[Key ID]" -Active:$true
+Set-AipServiceKeyProperties -KeyIdentifier "[Key ID]" -Active:$true
 
 
 

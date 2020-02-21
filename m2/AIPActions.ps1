@@ -2,16 +2,16 @@
 $Cred = Get-Credential
 
 #Connect to the Azure AD RMS Service
-Connect-AadrmService -Credential $Cred
+Connect-AipService -Credential $Cred
 
 #Template Commands
-Get-Command -Module AADRM *Template*
+Get-Command -Module AIPService *Template*
 
 #Get All templates
 Get-AadrmTemplate
 
 #Remove the LSI Template (Label)
-Remove-AadrmTemplate -TemplateId "template ID"
+Remove-AadrmTemplate -TemplateId "84c21a71-43b1-449e-873c-4c65c5c7fd33"
 
 #Create a new template
 $names = @{}
