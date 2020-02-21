@@ -11,7 +11,7 @@ Get-Command -Module AIPService *Template*
 Get-AadrmTemplate
 
 #Remove the LSI Template (Label)
-Remove-AadrmTemplate -TemplateId "template ID"
+Remove-AadrmTemplate -TemplateId "84c21a71-43b1-449e-873c-4c65c5c7fd33"
 
 #Create a new template
 $names = @{}
